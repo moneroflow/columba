@@ -26,7 +26,7 @@ class LockManager(
         private const val TAG = "LockManager"
         private const val MULTICAST_LOCK_TAG = "ReticulumMulticast"
         private const val WAKE_LOCK_TAG = "Columba::ReticulumService"
-        private const val WAKE_LOCK_TIMEOUT_MS = 15 * 60 * 1000L // 15 minutes
+        private const val WAKE_LOCK_TIMEOUT_MS = 300 * 1000L // 5 minutes
     }
 
     // Mutex for thread-safe lock operations
