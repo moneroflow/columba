@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
   <img src="./columba-icon.svg" width="200" height="200" alt="alt text" />
 </p>
@@ -42,3 +43,7 @@ Want to learn more? Visit [Reticulum's documentation](https://reticulum.network/
 ## Why "Columba"
 
 Columba, latin for "dove," is a [constellation](https://en.wikipedia.org/wiki/Columba_(constellation)) in the southern sky depicting a dove. Doves are commonly a symbol of peace and hope, and have been used as messengers throughout history. 
+=======
+# columba
+Improved version of the Open source Columba app for Reticulum (improved battery life &amp; bluetooth audio)
+>>>>>>> b52ddee22976d0a735fa3f18568010a9c9f68d9f

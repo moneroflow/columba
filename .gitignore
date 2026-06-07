@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled class file
 *.class
 
@@ -43,20 +44,47 @@ local.properties
 captures/
 .externalNativeBuild
 .cxx/
+=======
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log/OS Files
+*.log
+
+# Android Studio generated files and folders
+captures/
+.externalNativeBuild/
+.cxx/
+*.aab
+*.apk
+output-metadata.json
+
+# IntelliJ
+*.iml
+.idea/
+>>>>>>> b52ddee22976d0a735fa3f18568010a9c9f68d9f
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
 
+<<<<<<< HEAD
 # APK files
 *.apk
 *.aab
 *.aar
 *.ap_
 
+=======
+>>>>>>> b52ddee22976d0a735fa3f18568010a9c9f68d9f
 # Keystore files
 *.jks
 *.keystore
 
+<<<<<<< HEAD
 # Python
 __pycache__/
 *.py[cod]
@@ -116,3 +144,10 @@ sentry-wizard
 .planning/
 .swarm/
 .mcp.json
+=======
+# Google Services (e.g. APIs or Firebase)
+google-services.json
+
+# Android Profiling
+*.hprof
+>>>>>>> b52ddee22976d0a735fa3f18568010a9c9f68d9f
