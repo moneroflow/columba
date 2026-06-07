@@ -34,13 +34,9 @@ jobs:
           echo "TAG=v$(date +'%Y%m%d%H%M')" >> $GITHUB_ENV
           echo "APK_PATH=$(find app/build/outputs/apk/debug -name '*.apk' | head -n 1)" >> $GITHUB_ENV
 
-      - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+      - name: Upload APK to Repository
+        uses: stefanzachase/git-auto-commit-action@v5
         with:
-          tag_name: ${{ env.TAG }}
-          name: Release ${{ env.TAG }}
-          draft: false
-          prerelease: false
-          files: ${{ env.APK_PATH }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: "ci: upload latest debug apk [skip ci]"
+          file_pattern: 'app/build/outputs/apk/debug/*.apk'
+          branch: main
