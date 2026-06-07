@@ -33,9 +33,13 @@ jobs:
 
       - name: Build Debug APK
         run: |
-          export GRADLE_OPTS="-Dorg.gradle.jvmargs='-Xmx4g -XX:MaxMetaspaceSize=512m'"
-          ./gradlew clean
-          ./gradlew assembleDebug --no-daemon --stacktrace
+          chmod +x gradlew
+          ./gradlew assembleDebug \
+            -Dorg.gradle.daemon=false \
+            -Dorg.gradle.parallel=false \
+            -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=512m" \
+            --no-daemon \
+            --stacktrace
 
       - name: Prepare Release
         id: prepare_release
