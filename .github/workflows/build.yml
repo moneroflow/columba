@@ -26,7 +26,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: ./gradlew assembleDebug -Dorg.gradle.debug=true --stacktrace || (echo "Build failed, attempting with --no-daemon" && ./gradlew assembleDebug --no-daemon)
 
       - name: Prepare Release
         id: prepare_release
