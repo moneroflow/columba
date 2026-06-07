@@ -540,7 +540,7 @@ dependencies {
     testImplementation("androidx.compose.ui:ui-test-manifest")
     testImplementation(libs.paging.testing)
     testImplementation(libs.test.core)
-    testImplementation("androidx.test.ext:junit:1.1.5")
+    testImplementation("androidx.test.ext:junit:1.3.0")
     testImplementation("org.json:json:20231013") // Real JSON implementation for unit tests
     // chaquopy_java is compileOnly on :rns-host (kotlinBackend flavor must not
     // pull it in). MockK reflectively subclasses KotlinBLEBridge in unit tests
