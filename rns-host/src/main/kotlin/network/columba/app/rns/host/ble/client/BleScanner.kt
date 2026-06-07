@@ -98,6 +98,7 @@ class BleScanner(
     private var scanJob: Job? = null
     private var newDevicesInLastScan = 0
     private var scansWithoutNewDevices = 0
+    private var deepIdleScansCount = 0
 
     @Volatile
     private var currentScanInterval = activeScanIntervalMs
@@ -373,6 +374,7 @@ class BleScanner(
         if (newDevicesInLastScan > 0) {
             // Activity detected - use active interval
             scansWithoutNewDevices = 0
+            deepIdleScansCount = 0
             currentScanInterval = activeScanIntervalMs
             Log.d(TAG, "Scan interval: ACTIVE ($activeScanIntervalMs ms)")
         } else {
@@ -383,6 +385,15 @@ class BleScanner(
                 // Environment is stable - use idle interval
                 currentScanInterval = idleScanIntervalMs
                 Log.d(TAG, "Scan interval: IDLE ($idleScanIntervalMs ms)")
+            }
+
+            // Tapered Back-off: Enter Deep Idle if stable for too long
+            if (currentScanInterval == idleScanIntervalMs) {
+                deepIdleScansCount++
+                if (deepIdleScansCount >= 20) { // ~10 mins of idle scans (20 * 30s)
+                    currentScanInterval = 300_000L // 5 minutes
+                    Log.d(TAG, "Scan interval: DEEP IDLE (300,000 ms)")
+                }
             }
         }
     }
@@ -397,6 +408,7 @@ class BleScanner(
     private fun determineScanMode(): Int =
         when {
             newDevicesInLastScan > NEW_DEVICE_THRESHOLD -> ScanSettings.SCAN_MODE_LOW_LATENCY
+            currentScanInterval >= 300_000L -> ScanSettings.SCAN_MODE_LOW_POWER
             else -> ScanSettings.SCAN_MODE_BALANCED
         }
 
