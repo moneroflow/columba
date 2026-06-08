@@ -48,7 +48,7 @@ jobs:
           echo "APK_PATH=$(find app/build/outputs/apk/debug -name '*.apk' | head -n 1)" >> $GITHUB_ENV
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.TAG }}
           name: Release ${{ env.TAG }}
